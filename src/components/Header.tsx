@@ -39,28 +39,28 @@ const Header = () => {
   return (
     <header 
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-10 py-4',
-        isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-10 py-6',
+        isScrolled ? 'bg-black text-white border-b border-white/10' : 'bg-transparent text-white'
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a 
           href="#home" 
-          className="text-xl font-italiana text-italian-chianti font-bold italic"
+          className="text-xl font-italiana text-white font-bold uppercase tracking-tight"
           onClick={(e) => {
             e.preventDefault();
             scrollToSection('home');
           }}
         >
-          Sindhu Petapalle
+          SP.
         </a>
         
-        <nav className="hidden md:flex items-center space-x-1">
+        <nav className="hidden md:flex items-center space-x-6">
           {sections.map((section) => (
             <a
               key={section.id}
               href={`#${section.id}`}
-              className="px-3 py-2 text-sm font-medium text-italian-chianti hover:text-italian-terracotta transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-italian-terracotta after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-bottom-right hover:after:origin-bottom-left"
+              className="uppercase text-xs tracking-widest text-white/70 hover:text-white transition-colors duration-300 py-2"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(section.id);
@@ -72,7 +72,7 @@ const Header = () => {
         </nav>
         
         <button 
-          className="md:hidden text-italian-chianti"
+          className="md:hidden text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -82,13 +82,13 @@ const Header = () => {
       
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-white/90 backdrop-blur-md mt-16">
+        <div className="md:hidden fixed inset-0 z-40 bg-black bg-opacity-95 mt-[72px]">
           <nav className="flex flex-col items-center justify-center h-full space-y-6">
             {sections.map((section) => (
               <a
                 key={section.id}
                 href={`#${section.id}`}
-                className="text-lg font-italiana font-medium text-italian-chianti hover:text-italian-terracotta transition-colors duration-300"
+                className="text-lg uppercase tracking-widest text-white/70 hover:text-white transition-colors duration-300"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(section.id);
