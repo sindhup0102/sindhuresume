@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Database, Code, Activity, FileText, Heart, BrainCircuit } from 'lucide-react';
+import { Database, Code, Activity, FileText } from 'lucide-react';
 
 const Skills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -29,7 +29,7 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "SAS & Statistical Analysis",
-      icon: <FileText className="text-italian-terracotta" size={20} />,
+      icon: <FileText className="text-primary" size={20} />,
       skills: [
         "SAS Base", "SAS Macro", "SAS SQL (PROC SQL)", "SAS Data Step",
         "SAS/ODS", "SAS/GRAPH", "SAS/STAT", "SAS Enterprise Guide",
@@ -39,7 +39,7 @@ const Skills = () => {
     },
     {
       title: "Programming & Databases",
-      icon: <Code className="text-italian-terracotta" size={20} />,
+      icon: <Code className="text-primary" size={20} />,
       skills: [
         "R", "Python", "SQL Queries", "Oracle Databases",
         "Data Visualization", "Data Pipelines", "Data Cleaning",
@@ -48,42 +48,21 @@ const Skills = () => {
       ]
     },
     {
-      title: "Health Informatics",
-      icon: <BrainCircuit className="text-italian-terracotta" size={20} />,
-      skills: [
-        "EHR Systems", "Health Information Exchange", "FHIR", "HL7", 
-        "ICD", "CPT", "SNOMED CT", "LOINC", "HIPAA/HITECH Compliance",
-        "Clinical Decision Support", "Population Health Management",
-        "Telehealth Analytics", "Healthcare AI Applications"
-      ]
-    },
-    {
       title: "Data Standards & Healthcare",
-      icon: <Database className="text-italian-terracotta" size={20} />,
+      icon: <Database className="text-primary" size={20} />,
       skills: [
         "FHIR", "ICD", "CPT", "HIPAA/HITECH",
-        "IRB processes", "Health Information Exchange",
-        "CDISC Standards", "SDTM", "ADaM", "DICOM"
+        "IRB processes", "Health Information Exchange"
       ]
     },
     {
-      title: "Clinical & Biomedical",
-      icon: <Heart className="text-italian-terracotta" size={20} />,
+      title: "Biomedical Skills",
+      icon: <Activity className="text-primary" size={20} />,
       skills: [
-        "Clinical Workflow Analysis", "Clinical Trials Data Management",
-        "Pharmacovigilance", "Biomedical Data Analysis", 
-        "Genomic Data Interpretation", "Patient Safety Analytics",
-        "Clinical Quality Metrics", "Healthcare Process Improvement"
-      ]
-    },
-    {
-      title: "Research & Analysis",
-      icon: <Activity className="text-italian-terracotta" size={20} />,
-      skills: [
-        "Research Design", "Cohort Analysis", "Predictive Modeling",
-        "Outcomes Research", "Evidence-Based Medicine",
-        "Health Services Research", "Clinical Effectiveness",
-        "Risk Stratification", "Quality Improvement", "Data Mining"
+        "Drug Development Processes", "Pharmacovigilance",
+        "Biomedical Data Analysis", "Genomic Data Interpretation",
+        "Human Anatomy", "Physiology", "Disease Pathophysiology",
+        "Patient Safety", "Quality Improvement Initiatives"
       ]
     }
   ];
@@ -91,7 +70,7 @@ const Skills = () => {
   return (
     <section id="skills" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center font-italiana text-italian-chianti">Professional Skills</h2>
+        <h2 className="text-3xl font-bold mb-12 text-center">Skills</h2>
         
         <div 
           ref={containerRef}
@@ -105,14 +84,14 @@ const Skills = () => {
             >
               <div className="flex items-center gap-2 mb-4">
                 {category.icon}
-                <h3 className="text-xl font-semibold font-italiana">{category.title}</h3>
+                <h3 className="text-xl font-semibold">{category.title}</h3>
               </div>
               
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIndex) => (
                   <span 
                     key={skillIndex}
-                    className="pill bg-italian-cream hover:bg-italian-terracotta/10 hover:scale-105 text-italian-chianti"
+                    className="pill hover:bg-primary/10 hover:scale-105"
                   >
                     {skill}
                   </span>
