@@ -1,9 +1,8 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
@@ -110,7 +109,7 @@
 
 @layer components {
   .glass-card {
-    @apply bg-white/80 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10;
+    @apply bg-white/80 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-md;
   }
   
   .section-title {
@@ -118,7 +117,7 @@
   }
   
   .pill {
-    @apply px-3 py-1 rounded-full text-xs font-medium bg-secondary dark:bg-secondary/80 backdrop-blur-sm transition-all duration-300 inline-block;
+    @apply px-3 py-1 rounded-full text-xs font-medium bg-secondary/80 backdrop-blur-sm transition-all duration-300 inline-block shadow-sm;
   }
   
   .nav-link {
@@ -135,12 +134,12 @@
   }
   
   .timeline-item {
-    @apply relative pl-8 pb-10 border-l border-muted-foreground/20 last:border-l-0 last:pb-0;
+    @apply relative pl-8 pb-10 border-l border-muted-foreground/30 last:border-l-0 last:pb-0;
   }
   
   .timeline-item::before {
     content: '';
-    @apply absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-primary;
+    @apply absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-primary shadow-md;
   }
   
   .shimmer-bg {
@@ -154,6 +153,7 @@
   
   .card-3d:hover {
     box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
   }
   
   .custom-tooltip {
@@ -168,6 +168,7 @@
     transition: opacity 0.3s, transform 0.3s;
     pointer-events: none;
     z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   
   .custom-tooltip.visible {
@@ -205,6 +206,11 @@
   .social-icon-link:hover::before {
     left: 100%;
   }
+  
+  .animated-gradient-text {
+    background-size: 200% 200%;
+    animation: gradient-animation 4s ease infinite;
+  }
 }
 
 .scroll-container {
@@ -212,7 +218,7 @@
 }
 
 .glassmorphism {
-  @apply bg-white/80 dark:bg-black/20 backdrop-blur-lg border border-white/20 dark:border-white/10 shadow-lg;
+  @apply bg-white/90 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-white/10 shadow-lg;
 }
 
 .section-container {
@@ -327,6 +333,18 @@
   }
 }
 
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .animate-fade-in {
   animation: fade-in 1s ease forwards;
 }
@@ -341,6 +359,10 @@
 
 .animate-bounce-slow {
   animation: bounce-slow 4s infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 ::-webkit-scrollbar {

@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -21,7 +20,7 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
-				display: ['SF Pro Display', 'Inter', 'sans-serif']
+				display: ['Playfair Display', 'serif']
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -104,7 +103,7 @@ export default {
 				},
 				'pulse-slow': {
 					'0%, 100%': { opacity: '1' },
-					'50%': { opacity: '0.8' }
+					'50%': { opacity: '0.7' }
 				},
 				'shimmer': {
 					'0%': { backgroundPosition: '-200% 0' },
@@ -119,7 +118,7 @@ export default {
 				'slide-in': 'slide-in 0.6s ease-out',
 				'scale-in': 'scale-in 0.5s ease-out',
 				'float': 'float 4s ease-in-out infinite',
-				'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
+				'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
 				'shimmer': 'shimmer 2s linear infinite'
 			}
 		}
