@@ -55,20 +55,20 @@ const About = () => {
             </div>
             
             <div className="md:col-span-9 space-y-6">
-              <p className="text-xl leading-relaxed">
+              <p className="font-italiana text-xl leading-relaxed">
                 I am a Health Informatics professional with expertise in SAS, R, Python, and SQL for healthcare data analysis. 
                 My background combines technical skills with healthcare domain knowledge, allowing me to effectively analyze 
                 clinical data and derive meaningful insights.
               </p>
               
-              <p className="text-base text-black/80 leading-relaxed">
+              <p className="font-italiana text-base text-black/80 leading-relaxed">
                 With experience in clinical trials, biomedical data analysis, and healthcare information systems, 
                 I'm passionate about leveraging data analytics to improve healthcare outcomes and patient care. 
                 My skills extend to data standards like FHIR and HIPAA compliance, as well as deep understanding 
                 of health information exchange processes.
               </p>
               
-              <p className="text-base text-black/80 leading-relaxed">
+              <p className="font-italiana text-base text-black/80 leading-relaxed">
                 I'm currently pursuing my Master's degree in Health Informatics at the University of Wisconsin-Milwaukee, 
                 where I'm enhancing my technical expertise and healthcare knowledge. My goal is to continue contributing 
                 to the advancement of healthcare through data-driven insights and innovative solutions.
