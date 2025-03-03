@@ -7,7 +7,6 @@ const Cursor = () => {
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
   const [cursorText, setCursorText] = useState("");
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     // Only enable custom cursor on desktop
@@ -23,9 +22,6 @@ const Cursor = () => {
       document.addEventListener('mouseleave', onMouseLeave);
       document.addEventListener('mousedown', onMouseDown);
       document.addEventListener('mouseup', onMouseUp);
-      
-      // Add listener for page transitions
-      document.addEventListener('click', checkForTransition);
     };
     
     const removeEventListeners = () => {
@@ -34,7 +30,6 @@ const Cursor = () => {
       document.removeEventListener('mouseleave', onMouseLeave);
       document.removeEventListener('mousedown', onMouseDown);
       document.removeEventListener('mouseup', onMouseUp);
-      document.removeEventListener('click', checkForTransition);
     };
     
     const onMouseMove = (e: MouseEvent) => {
@@ -65,23 +60,6 @@ const Cursor = () => {
       }
     };
     
-    const checkForTransition = (e: MouseEvent) => {
-      const clickedElement = e.target as HTMLElement;
-      const isLink = 
-        clickedElement.tagName === 'A' || 
-        clickedElement.closest('a') ||
-        clickedElement.tagName === 'BUTTON' ||
-        clickedElement.closest('button');
-      
-      if (isLink) {
-        // Create a transition effect
-        setIsTransitioning(true);
-        setTimeout(() => {
-          setIsTransitioning(false);
-        }, 500);
-      }
-    };
-    
     const onMouseDown = () => {
       setClicked(true);
     };
@@ -106,11 +84,8 @@ const Cursor = () => {
 
   return (
     <>
-      {isTransitioning && (
-        <div className="fixed inset-0 bg-black/70 z-[9999] animate-fade-in" style={{ animationDuration: '0.3s' }} />
-      )}
       <div
-        className={`cursor ${clicked ? 'active' : ''} ${linkHovered ? 'active' : ''} ${isTransitioning ? 'transitioning' : ''}`}
+        className={`cursor ${clicked ? 'active' : ''} ${linkHovered ? 'active' : ''}`}
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
