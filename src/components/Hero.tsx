@@ -150,7 +150,7 @@ const Hero = () => {
         </div>
         
         <Button 
-          onClick={scrollToTop}
+          onClick={scrollToNext}
           variant="outline" 
           size="lg"
           className="animate-bounce-slow animate-fade-in opacity-0 group"
