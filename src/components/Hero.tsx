@@ -1,10 +1,12 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowDown, Briefcase, Github, Linkedin, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [rotation, setRotation] = useState({ x: 0, y: 0 });
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,6 +25,41 @@ const Hero = () => {
     return () => {
       if (containerRef.current) {
         observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+  
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!cardRef.current) return;
+      
+      const rect = cardRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      
+      setRotation({ x: rotateX, y: rotateY });
+    };
+    
+    const resetRotation = () => {
+      setRotation({ x: 0, y: 0 });
+    };
+    
+    const card = cardRef.current;
+    if (card) {
+      card.addEventListener('mousemove', handleMouseMove);
+      card.addEventListener('mouseleave', resetRotation);
+    }
+    
+    return () => {
+      if (card) {
+        card.removeEventListener('mousemove', handleMouseMove);
+        card.removeEventListener('mouseleave', resetRotation);
       }
     };
   }, []);
@@ -59,7 +96,8 @@ const Hero = () => {
             href="https://linkedin.com/in/sindhu-petapalle7/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-border hover:border-primary transition-colors duration-300"
+            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full border border-border hover:border-primary transition-colors duration-300"
+            data-tooltip="Connect on LinkedIn"
           >
             <Linkedin size={18} />
             <span className="hidden sm:inline">LinkedIn</span>
@@ -67,7 +105,8 @@ const Hero = () => {
           
           <a 
             href="mailto:petapallesindhu@gmail.com" 
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-border hover:border-primary transition-colors duration-300"
+            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full border border-border hover:border-primary transition-colors duration-300"
+            data-tooltip="Send Email"
           >
             <Mail size={18} />
             <span className="hidden sm:inline">Email</span>
@@ -75,7 +114,8 @@ const Hero = () => {
           
           <a 
             href="tel:+15128182210" 
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-border hover:border-primary transition-colors duration-300"
+            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full border border-border hover:border-primary transition-colors duration-300"
+            data-tooltip="Call Me"
           >
             <Phone size={18} />
             <span className="hidden sm:inline">512-818-2210</span>
@@ -85,14 +125,24 @@ const Hero = () => {
             href="https://github.com/sindhup0102" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-border hover:border-primary transition-colors duration-300"
+            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full border border-border hover:border-primary transition-colors duration-300"
+            data-tooltip="Check my GitHub"
           >
             <Github size={18} />
             <span className="hidden sm:inline">GitHub</span>
           </a>
         </div>
         
-        <div className="glassmorphism p-6 md:p-8 rounded-2xl max-w-3xl mb-12 animate-fade-in opacity-0" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
+        <div 
+          ref={cardRef}
+          className="card-3d glassmorphism p-6 md:p-8 rounded-2xl max-w-3xl mb-12 animate-fade-in opacity-0 transition-transform" 
+          style={{ 
+            animationDelay: '0.8s', 
+            animationFillMode: 'forwards',
+            transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+            transformStyle: 'preserve-3d' 
+          }}
+        >
           <p className="text-lg">
             Health Informatics professional with expertise in SAS, R, Python, and SQL. 
             Specialized in healthcare data analysis, clinical trials, and biomedical data interpretation.
@@ -100,10 +150,10 @@ const Hero = () => {
         </div>
         
         <Button 
-          onClick={scrollToNext}
+          onClick={scrollToTop}
           variant="outline" 
           size="lg"
-          className="animate-fade-in opacity-0 group"
+          className="animate-bounce-slow animate-fade-in opacity-0 group"
           style={{ animationDelay: '1s', animationFillMode: 'forwards' }}
         >
           <span>Explore My Profile</span>

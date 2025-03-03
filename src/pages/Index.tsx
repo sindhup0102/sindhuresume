@@ -13,6 +13,28 @@ import Cursor from '@/components/Cursor';
 import Animations from '@/components/Animations';
 
 const Index = () => {
+  // Add page transitions
+  useEffect(() => {
+    const sections = document.querySelectorAll('section');
+    let currentSection = 0;
+    
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowDown' && currentSection < sections.length - 1) {
+        currentSection++;
+        sections[currentSection].scrollIntoView({ behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' && currentSection > 0) {
+        currentSection--;
+        sections[currentSection].scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground scroll-container">
       <Cursor />

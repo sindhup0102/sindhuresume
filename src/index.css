@@ -45,6 +45,8 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    --primary-rgb: 66, 135, 245;
   }
 
   .dark {
@@ -75,6 +77,8 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+    
+    --primary-rgb: 99, 153, 245;
   }
 }
 
@@ -142,6 +146,65 @@
   .shimmer-bg {
     @apply bg-gradient-to-r from-transparent via-white/10 to-transparent bg-[length:200%_100%] animate-shimmer;
   }
+  
+  .card-3d {
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card-3d:hover {
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .custom-tooltip {
+    position: fixed;
+    padding: 5px 10px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: 4px;
+    font-size: 0.75rem;
+    transform: translateX(-50%) translateY(10px);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    z-index: 1000;
+  }
+  
+  .custom-tooltip.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  .custom-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid hsl(var(--primary));
+  }
+  
+  .social-icon-link {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .social-icon-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb), 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .social-icon-link:hover::before {
+    left: 100%;
+  }
 }
 
 .scroll-container {
@@ -195,6 +258,89 @@
   width: 40px;
   height: 40px;
   background-color: rgba(var(--primary-rgb), 0.2);
+}
+
+.cursor-text {
+  position: fixed;
+  font-size: 12px;
+  font-weight: 500;
+  color: hsl(var(--primary));
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-progress-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-progress-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transition: height 0.2s ease;
+}
+
+.particle-canvas {
+  opacity: 0.2;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 4s infinite;
 }
 
 ::-webkit-scrollbar {

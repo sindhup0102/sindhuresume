@@ -6,6 +6,7 @@ const Cursor = () => {
   const [hidden, setHidden] = useState(true);
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
+  const [cursorText, setCursorText] = useState("");
 
   useEffect(() => {
     // Only enable custom cursor on desktop
@@ -43,6 +44,13 @@ const Cursor = () => {
           hoveredElement.closest('button');
           
         setLinkHovered(!!isLink);
+        
+        // Show "Click" text on buttons and links
+        if (isLink) {
+          setCursorText("Click");
+        } else {
+          setCursorText("");
+        }
       }
     };
     
@@ -69,14 +77,28 @@ const Cursor = () => {
   if (hidden) return null;
 
   return (
-    <div
-      className={`cursor ${clicked ? 'active' : ''} ${linkHovered ? 'active' : ''}`}
-      style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        opacity: hidden ? 0 : 1,
-      }}
-    />
+    <>
+      <div
+        className={`cursor ${clicked ? 'active' : ''} ${linkHovered ? 'active' : ''}`}
+        style={{
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          opacity: hidden ? 0 : 1,
+        }}
+      />
+      {cursorText && (
+        <div 
+          className="cursor-text"
+          style={{
+            left: `${position.x + 15}px`,
+            top: `${position.y + 15}px`,
+            opacity: hidden ? 0 : 1,
+          }}
+        >
+          {cursorText}
+        </div>
+      )}
+    </>
   );
 };
 
