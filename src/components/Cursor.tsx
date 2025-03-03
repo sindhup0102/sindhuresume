@@ -45,15 +45,9 @@ const Cursor = () => {
           
         setLinkHovered(!!isLink);
         
-        // Show text on buttons and links
+        // Show "Click" text on buttons and links
         if (isLink) {
-          const linkElement = hoveredElement.tagName === 'A' || hoveredElement.tagName === 'BUTTON' 
-            ? hoveredElement 
-            : (hoveredElement.closest('a') || hoveredElement.closest('button'));
-          
-          // Get any custom text from data-tooltip
-          const tooltipText = linkElement?.getAttribute('data-tooltip');
-          setCursorText(tooltipText || "Click");
+          setCursorText("Click");
         } else {
           setCursorText("");
         }
