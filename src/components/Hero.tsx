@@ -77,24 +77,36 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center pt-20 px-6 bg-gradient-to-b from-purple-50 to-blue-50 dark:from-slate-900 dark:to-indigo-950"
+      className="min-h-screen flex items-center justify-center pt-20 px-6 bg-gradient-to-br from-indigo-50 via-rose-50 to-teal-50 dark:from-slate-900 dark:via-indigo-950 dark:to-slate-900 relative overflow-hidden"
     >
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full">
+        <div className="absolute top-1/4 left-10 w-32 h-32 rounded-full bg-gradient-to-r from-pink-200 to-rose-300 opacity-20 blur-2xl animate-float"></div>
+        <div className="absolute bottom-1/3 right-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-200 to-indigo-300 opacity-20 blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-gradient-to-r from-green-200 to-teal-300 opacity-15 blur-2xl animate-float" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute bottom-1/4 left-1/4 w-28 h-28 rounded-full bg-gradient-to-r from-purple-200 to-violet-300 opacity-20 blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
+      </div>
+      
       <div 
         ref={containerRef}
-        className="section-container max-w-5xl w-full flex flex-col items-center text-center"
+        className="section-container max-w-5xl w-full flex flex-col items-center text-center relative z-10"
       >
-        <div className="animate-float mb-4">
-          <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-tr from-violet-400 to-pink-400 flex items-center justify-center shadow-lg">
+        <div className="relative mb-6">
+          <div className="absolute -inset-1 bg-gradient-to-r from-pink-400 via-violet-400 to-indigo-400 rounded-full blur-md opacity-70 animate-pulse-slow"></div>
+          <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-xl relative animate-float z-10">
             <span className="text-4xl md:text-5xl text-white font-bold">SP</span>
           </div>
         </div>
         
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in opacity-0 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-          Sindhu Petapalle
-        </h1>
+        <div className="relative mb-6">
+          <div className="absolute -inset-x-6 -inset-y-2 bg-gradient-to-r from-transparent via-violet-400/20 to-transparent blur-md"></div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold animate-fade-in opacity-0 bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 drop-shadow-sm" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+            Sindhu Petapalle
+          </h1>
+        </div>
         
-        <h2 className="text-xl md:text-2xl text-muted-foreground mb-8 animate-fade-in opacity-0" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
-          <span className="text-pink-500">Health</span> <span className="text-purple-500">Informatics</span> <span className="text-indigo-500">Professional</span>
+        <h2 className="text-xl md:text-2xl text-muted-foreground mb-8 animate-fade-in opacity-0 font-light tracking-wide" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
+          <span className="text-pink-500 font-medium">Health</span> <span className="text-purple-500 font-medium">Informatics</span> <span className="text-indigo-500 font-medium">Professional</span>
         </h2>
         
         <div className="flex flex-wrap justify-center gap-4 mb-12 animate-fade-in opacity-0" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
@@ -102,59 +114,59 @@ const Hero = () => {
             href="https://linkedin.com/in/sindhu-petapalle7/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 text-white hover:shadow-lg transition-all duration-300"
+            className="social-icon-link group flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:shadow-lg hover:shadow-blue-300/30 transition-all duration-300 transform hover:-translate-y-1"
             data-tooltip="Connect on LinkedIn"
           >
-            <Linkedin size={18} />
-            <span className="hidden sm:inline">LinkedIn</span>
+            <Linkedin size={18} className="transition-transform group-hover:scale-110" />
+            <span className="hidden sm:inline font-medium">LinkedIn</span>
           </a>
           
           <a 
             href="mailto:petapallesindhu@gmail.com" 
-            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-red-400 to-red-500 text-white hover:shadow-lg transition-all duration-300"
+            className="social-icon-link group flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 text-white hover:shadow-lg hover:shadow-rose-300/30 transition-all duration-300 transform hover:-translate-y-1"
             data-tooltip="Send Email"
           >
-            <Mail size={18} />
-            <span className="hidden sm:inline">Email</span>
+            <Mail size={18} className="transition-transform group-hover:scale-110" />
+            <span className="hidden sm:inline font-medium">Email</span>
           </a>
           
           <a 
             href="tel:+15128182210" 
-            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-400 to-green-500 text-white hover:shadow-lg transition-all duration-300"
+            className="social-icon-link group flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white hover:shadow-lg hover:shadow-emerald-300/30 transition-all duration-300 transform hover:-translate-y-1"
             data-tooltip="Call Me"
           >
-            <Phone size={18} />
-            <span className="hidden sm:inline">512-818-2210</span>
+            <Phone size={18} className="transition-transform group-hover:scale-110" />
+            <span className="hidden sm:inline font-medium">512-818-2210</span>
           </a>
           
           <a 
             href="https://github.com/sindhup0102" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-gray-700 to-gray-800 text-white hover:shadow-lg transition-all duration-300"
+            className="social-icon-link group flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-gray-700 to-gray-900 text-white hover:shadow-lg hover:shadow-gray-400/20 transition-all duration-300 transform hover:-translate-y-1"
             data-tooltip="Check my GitHub"
           >
-            <Github size={18} />
-            <span className="hidden sm:inline">GitHub</span>
+            <Github size={18} className="transition-transform group-hover:scale-110" />
+            <span className="hidden sm:inline font-medium">GitHub</span>
           </a>
         </div>
         
         <div 
           ref={cardRef}
-          className="card-3d glassmorphism p-6 md:p-8 rounded-2xl max-w-3xl mb-12 animate-fade-in opacity-0 transition-transform bg-gradient-to-br from-white/70 to-white/30 dark:from-slate-800/70 dark:to-slate-800/30 border border-purple-200 dark:border-indigo-900 shadow-xl" 
+          className="card-3d p-8 md:p-10 rounded-2xl max-w-3xl mb-12 animate-fade-in opacity-0 transition-transform relative overflow-hidden backdrop-blur-sm border border-white/30 dark:border-white/10 shadow-2xl" 
           style={{ 
             animationDelay: '0.8s', 
             animationFillMode: 'forwards',
             transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
             transformStyle: 'preserve-3d',
-            boxShadow: '0 10px 30px rgba(147, 51, 234, 0.2)'
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.3))',
           }}
         >
-          <div className="absolute -top-3 -left-3 w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full opacity-20 blur-xl"></div>
-          <div className="absolute -bottom-3 -right-3 w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full opacity-20 blur-xl"></div>
+          <div className="absolute -top-24 -left-24 w-48 h-48 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full opacity-20 blur-3xl"></div>
+          <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full opacity-20 blur-3xl"></div>
           
-          <p className="text-lg relative z-10">
-            Health Informatics professional with expertise in <span className="text-blue-500 font-semibold">SAS</span>, <span className="text-green-500 font-semibold">R</span>, <span className="text-yellow-500 font-semibold">Python</span>, and <span className="text-purple-500 font-semibold">SQL</span>. 
+          <p className="text-lg relative z-10 leading-relaxed text-gray-800 dark:text-white/90">
+            Health Informatics professional with expertise in <span className="text-blue-600 dark:text-blue-400 font-semibold">SAS</span>, <span className="text-green-600 dark:text-green-400 font-semibold">R</span>, <span className="text-yellow-600 dark:text-yellow-400 font-semibold">Python</span>, and <span className="text-purple-600 dark:text-purple-400 font-semibold">SQL</span>. 
             Specialized in healthcare data analysis, clinical trials, and biomedical data interpretation.
           </p>
         </div>
@@ -163,18 +175,14 @@ const Hero = () => {
           onClick={scrollToNext}
           variant="outline" 
           size="lg"
-          className="animate-bounce-slow animate-fade-in opacity-0 group bg-gradient-to-r from-purple-500 to-indigo-500 text-white border-0 hover:from-purple-600 hover:to-indigo-600"
+          className="animate-bounce-slow animate-fade-in opacity-0 group relative overflow-hidden bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500 text-white border-0 hover:shadow-lg hover:shadow-purple-400/30 transition-all duration-300 transform hover:-translate-y-1"
           style={{ animationDelay: '1s', animationFillMode: 'forwards' }}
         >
-          <span>Explore My Profile</span>
+          <span className="relative z-10">Explore My Profile</span>
           <ArrowDown className="ml-2 group-hover:translate-y-1 transition-transform duration-300" size={18} />
+          <div className="absolute inset-0 bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </Button>
       </div>
-      
-      {/* Decorative elements */}
-      <div className="absolute top-1/4 left-10 w-20 h-20 rounded-full bg-gradient-to-r from-pink-300 to-purple-300 opacity-20 blur-xl animate-float" style={{ animationDelay: '0.5s' }}></div>
-      <div className="absolute bottom-1/4 right-10 w-16 h-16 rounded-full bg-gradient-to-r from-blue-300 to-indigo-300 opacity-20 blur-xl animate-float" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute top-1/2 right-1/4 w-12 h-12 rounded-full bg-gradient-to-r from-green-300 to-teal-300 opacity-20 blur-xl animate-float" style={{ animationDelay: '1.5s' }}></div>
     </section>
   );
 };
