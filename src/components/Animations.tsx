@@ -8,6 +8,7 @@ interface Particle {
   speedX: number;
   speedY: number;
   color: string;
+  opacity: number;
 }
 
 const Animations = () => {
@@ -79,16 +80,17 @@ const Animations = () => {
       // Create particles
       const createParticles = () => {
         const particles: Particle[] = [];
-        const colors = ['#4361ee', '#3a0ca3', '#4cc9f0', '#560bad', '#7209b7'];
+        const colors = ['#ffffff'];
         
         for (let i = 0; i < 50; i++) {
           particles.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            size: Math.random() * 3 + 1,
-            speedX: (Math.random() - 0.5) * 0.5,
-            speedY: (Math.random() - 0.5) * 0.5,
-            color: colors[Math.floor(Math.random() * colors.length)]
+            size: Math.random() * 2 + 0.5,
+            speedX: (Math.random() - 0.5) * 0.3,
+            speedY: (Math.random() - 0.5) * 0.3,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            opacity: Math.random() * 0.5 + 0.1
           });
         }
         
@@ -104,6 +106,7 @@ const Animations = () => {
         particlesRef.current.forEach((particle) => {
           // Draw particle
           ctx.fillStyle = particle.color;
+          ctx.globalAlpha = particle.opacity;
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
           ctx.fill();
@@ -122,7 +125,34 @@ const Animations = () => {
           }
         });
         
+        // Connect particles with lines if they're close
+        connectParticles(ctx);
+        
         animationRef.current = requestAnimationFrame(animate);
+      };
+      
+      const connectParticles = (ctx: CanvasRenderingContext2D) => {
+        const maxDistance = 150;
+        
+        for (let i = 0; i < particlesRef.current.length; i++) {
+          for (let j = i; j < particlesRef.current.length; j++) {
+            const dx = particlesRef.current[i].x - particlesRef.current[j].x;
+            const dy = particlesRef.current[i].y - particlesRef.current[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < maxDistance) {
+              const opacity = 1 - (distance / maxDistance);
+              ctx.globalAlpha = opacity * 0.2;
+              ctx.strokeStyle = '#ffffff';
+              ctx.lineWidth = 0.5;
+              
+              ctx.beginPath();
+              ctx.moveTo(particlesRef.current[i].x, particlesRef.current[i].y);
+              ctx.lineTo(particlesRef.current[j].x, particlesRef.current[j].y);
+              ctx.stroke();
+            }
+          }
+        }
       };
       
       animate();
@@ -135,8 +165,25 @@ const Animations = () => {
       };
     };
     
+    const addHoverEffects = () => {
+      const elements = document.querySelectorAll('a, button');
+      
+      elements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+          const ripple = document.createElement('div');
+          ripple.classList.add('ripple-effect');
+          element.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 1000);
+        });
+      });
+    };
+    
     const cleanup1 = observeElements();
     addScrollSmoothing();
+    addHoverEffects();
     const cleanup2 = addParticleEffect();
     
     return () => {
@@ -183,7 +230,7 @@ const Animations = () => {
   return (
     <canvas 
       ref={canvasRef}
-      className="particle-canvas fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"
+      className="particle-canvas fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-20"
     />
   );
 };
