@@ -40,13 +40,13 @@ const Header = () => {
     <header 
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-10 py-4',
-        isScrolled ? 'glassmorphism' : 'bg-transparent'
+        isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a 
           href="#home" 
-          className="text-xl font-display font-bold"
+          className="text-xl font-italiana text-italian-chianti font-bold italic"
           onClick={(e) => {
             e.preventDefault();
             scrollToSection('home');
@@ -60,7 +60,7 @@ const Header = () => {
             <a
               key={section.id}
               href={`#${section.id}`}
-              className="nav-link"
+              className="px-3 py-2 text-sm font-medium text-italian-chianti hover:text-italian-terracotta transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-italian-terracotta after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-bottom-right hover:after:origin-bottom-left"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(section.id);
@@ -72,7 +72,7 @@ const Header = () => {
         </nav>
         
         <button 
-          className="md:hidden text-foreground"
+          className="md:hidden text-italian-chianti"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -82,13 +82,13 @@ const Header = () => {
       
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-40 glassmorphism mt-16">
+        <div className="md:hidden fixed inset-0 z-40 bg-white/90 backdrop-blur-md mt-16">
           <nav className="flex flex-col items-center justify-center h-full space-y-6">
             {sections.map((section) => (
               <a
                 key={section.id}
                 href={`#${section.id}`}
-                className="text-lg font-medium hover:text-primary transition-colors duration-300"
+                className="text-lg font-italiana font-medium text-italian-chianti hover:text-italian-terracotta transition-colors duration-300"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(section.id);

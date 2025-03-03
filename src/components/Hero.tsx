@@ -78,29 +78,36 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center pt-20 px-6 bg-gradient-to-b from-background to-secondary/20"
+      className="min-h-screen flex items-center justify-center pt-20 px-6 bg-gradient-to-b from-italian-cream/50 to-background"
+      style={{
+        backgroundImage: 'url("https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundBlendMode: 'overlay',
+        backgroundAttachment: 'fixed'
+      }}
     >
       <div 
         ref={containerRef}
-        className="section-container max-w-5xl w-full flex flex-col items-center text-center"
+        className="section-container max-w-5xl w-full flex flex-col items-center text-center backdrop-blur-sm py-12 px-6 rounded-lg"
       >
         <div className="mb-8 relative">
-          <div className="absolute -z-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl opacity-70 animate-pulse-slow"></div>
-          <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-primary/20 shadow-xl">
+          <div className="absolute -z-10 w-64 h-64 bg-italian-terracotta/10 rounded-full blur-3xl opacity-70 animate-pulse-slow"></div>
+          <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-italian-terracotta/20 shadow-xl">
             <AvatarImage src="/profile.jpg" alt="Sindhu Petapalle" />
-            <AvatarFallback className="bg-primary/10 text-2xl font-bold">SP</AvatarFallback>
+            <AvatarFallback className="bg-italian-terracotta/10 text-2xl font-bold">SP</AvatarFallback>
           </Avatar>
         </div>
         
         <div className="relative">
-          <Sparkles className="absolute -left-8 -top-6 text-primary opacity-70 animate-pulse-slow" size={24} />
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in opacity-0 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-primary" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+          <Sparkles className="absolute -left-8 -top-6 text-italian-terracotta opacity-70 animate-pulse-slow" size={24} />
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-italiana font-bold mb-6 animate-fade-in opacity-0 bg-clip-text text-transparent bg-gradient-to-r from-italian-chianti to-italian-terracotta" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             Sindhu Petapalle
           </h1>
-          <Sparkles className="absolute -right-8 -top-6 text-primary opacity-70 animate-pulse-slow" size={24} />
+          <Sparkles className="absolute -right-8 -top-6 text-italian-terracotta opacity-70 animate-pulse-slow" size={24} />
         </div>
         
-        <h2 className="text-xl md:text-2xl text-muted-foreground mb-8 animate-fade-in opacity-0" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
+        <h2 className="text-xl md:text-2xl text-italian-chianti/80 mb-8 animate-fade-in opacity-0 font-italiana" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
           Health Informatics Professional
         </h2>
         
@@ -109,28 +116,28 @@ const Hero = () => {
             href="https://linkedin.com/in/sindhu-petapalle7/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full bg-card shadow-md border border-border hover:border-primary hover:shadow-lg transition-all duration-300"
+            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 shadow-md border border-italian-terracotta/30 hover:border-italian-terracotta hover:shadow-lg transition-all duration-300"
             data-tooltip="Connect on LinkedIn"
           >
-            <Linkedin size={18} className="text-primary" />
+            <Linkedin size={18} className="text-italian-terracotta" />
             <span className="hidden sm:inline">LinkedIn</span>
           </a>
           
           <a 
             href="mailto:petapallesindhu@gmail.com" 
-            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full bg-card shadow-md border border-border hover:border-primary hover:shadow-lg transition-all duration-300"
+            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 shadow-md border border-italian-terracotta/30 hover:border-italian-terracotta hover:shadow-lg transition-all duration-300"
             data-tooltip="Send Email"
           >
-            <Mail size={18} className="text-primary" />
+            <Mail size={18} className="text-italian-terracotta" />
             <span className="hidden sm:inline">Email</span>
           </a>
           
           <a 
             href="tel:+15128182210" 
-            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full bg-card shadow-md border border-border hover:border-primary hover:shadow-lg transition-all duration-300"
+            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 shadow-md border border-italian-terracotta/30 hover:border-italian-terracotta hover:shadow-lg transition-all duration-300"
             data-tooltip="Call Me"
           >
-            <Phone size={18} className="text-primary" />
+            <Phone size={18} className="text-italian-terracotta" />
             <span className="hidden sm:inline">512-818-2210</span>
           </a>
           
@@ -138,17 +145,17 @@ const Hero = () => {
             href="https://github.com/sindhup0102" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full bg-card shadow-md border border-border hover:border-primary hover:shadow-lg transition-all duration-300"
+            className="social-icon-link flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 shadow-md border border-italian-terracotta/30 hover:border-italian-terracotta hover:shadow-lg transition-all duration-300"
             data-tooltip="Check my GitHub"
           >
-            <Github size={18} className="text-primary" />
+            <Github size={18} className="text-italian-terracotta" />
             <span className="hidden sm:inline">GitHub</span>
           </a>
         </div>
         
         <div 
           ref={cardRef}
-          className="card-3d glassmorphism p-6 md:p-8 rounded-2xl max-w-3xl mb-12 animate-fade-in opacity-0 transition-all border border-primary/10 bg-card/80 shadow-xl" 
+          className="card-3d p-6 md:p-8 rounded-2xl max-w-3xl mb-12 animate-fade-in opacity-0 transition-all border border-italian-terracotta/10 bg-white/70 backdrop-blur-sm shadow-xl" 
           style={{ 
             animationDelay: '0.8s', 
             animationFillMode: 'forwards',
@@ -156,14 +163,14 @@ const Hero = () => {
             transformStyle: 'preserve-3d' 
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/20 rounded-2xl -z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-italian-tuscany/5 to-italian-terracotta/10 rounded-2xl -z-10"></div>
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-2 rounded-full bg-primary/10">
-              <Briefcase size={24} className="text-primary" />
+            <div className="p-2 rounded-full bg-italian-terracotta/10">
+              <Briefcase size={24} className="text-italian-terracotta" />
             </div>
-            <h3 className="text-xl font-semibold">Professional Summary</h3>
+            <h3 className="text-xl font-italiana">Professional Summary</h3>
           </div>
-          <p className="text-lg leading-relaxed">
+          <p className="text-lg leading-relaxed text-italian-chianti/90">
             Health Informatics professional with expertise in SAS, R, Python, and SQL. 
             Specialized in healthcare data analysis, clinical trials, and biomedical data interpretation.
           </p>
@@ -173,7 +180,7 @@ const Hero = () => {
           onClick={scrollToNext}
           variant="default" 
           size="lg"
-          className="animate-bounce-slow animate-fade-in opacity-0 group bg-gradient-to-r from-primary to-primary/80 shadow-md hover:shadow-lg"
+          className="animate-bounce-slow animate-fade-in opacity-0 group bg-italian-terracotta hover:bg-italian-sienna shadow-md hover:shadow-lg"
           style={{ animationDelay: '1s', animationFillMode: 'forwards' }}
         >
           <span>Explore My Profile</span>
