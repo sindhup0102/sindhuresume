@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowDown, Briefcase, Github, Linkedin, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -79,7 +80,7 @@ const Hero = () => {
       id="home" 
       className="min-h-screen flex items-center justify-center pt-20 px-6 bg-gradient-to-b from-italian-cream/50 to-background"
       style={{
-        backgroundImage: 'url("https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80")',
+        backgroundImage: 'url("https://images.unsplash.com/photo-1526724132975-731d24e189ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',
@@ -168,8 +169,9 @@ const Hero = () => {
             <h3 className="text-xl font-italiana">Professional Summary</h3>
           </div>
           <p className="text-lg leading-relaxed text-italian-chianti/90">
-            Health Informatics professional with expertise in SAS, R, Python, and SQL. 
-            Specialized in healthcare data analysis, clinical trials, and biomedical data interpretation.
+            Dedicated Health Informatics professional specializing in healthcare data analysis using SAS, R, Python, and SQL. 
+            Expert in leveraging data analytics to improve healthcare outcomes through clinical trials analysis, 
+            biomedical data interpretation, and health information systems optimization.
           </p>
         </div>
         
