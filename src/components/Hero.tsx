@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowDown, Briefcase, Github, Linkedin, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -90,14 +89,6 @@ const Hero = () => {
         ref={containerRef}
         className="section-container max-w-5xl w-full flex flex-col items-center text-center backdrop-blur-sm py-12 px-6 rounded-lg"
       >
-        <div className="mb-8 relative">
-          <div className="absolute -z-10 w-64 h-64 bg-italian-terracotta/10 rounded-full blur-3xl opacity-70 animate-pulse-slow"></div>
-          <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-italian-terracotta/20 shadow-xl">
-            <AvatarImage src="/profile.jpg" alt="Sindhu Petapalle" />
-            <AvatarFallback className="bg-italian-terracotta/10 text-2xl font-bold">SP</AvatarFallback>
-          </Avatar>
-        </div>
-        
         <div className="relative">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-italiana font-bold mb-6 animate-fade-in opacity-0 bg-clip-text text-transparent bg-gradient-to-r from-italian-chianti to-italian-terracotta" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             Sindhu Petapalle
