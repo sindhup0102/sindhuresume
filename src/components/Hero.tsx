@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowDown, Briefcase, Github, Linkedin, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -79,7 +78,6 @@ const Hero = () => {
       id="home" 
       className="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden"
     >
-      {/* Hero background with parallax effect */}
       <div 
         className="absolute inset-0 w-full h-full bg-cover bg-fixed bg-center"
         style={{ 
@@ -88,7 +86,6 @@ const Hero = () => {
         }}
       />
       
-      {/* Overlay pattern */}
       <div 
         className="absolute inset-0 opacity-10"
         style={{ 
@@ -99,30 +96,25 @@ const Hero = () => {
         }}
       />
       
-      {/* Glass overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80 backdrop-blur-sm"></div>
       
-      {/* Content */}
       <div 
         ref={containerRef}
         className="section-container max-w-6xl w-full flex flex-col md:flex-row items-center gap-8 md:gap-16 relative z-10"
       >
-        {/* Profile Image Section with floating animation and glow */}
         <div className="flex-shrink-0 animate-fade-in opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
           <div className="relative animate-float">
             <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-white/20 to-white/10 blur-xl"></div>
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/10 shadow-[0_0_25px_rgba(255,255,255,0.15)]">
               <img 
-                src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=600&q=80" 
+                src="/lovable-uploads/345d6cc9-83d0-4a54-8e88-ecb892359cd0.png" 
                 alt="Sindhu Petapalle" 
                 className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                style={{ filter: 'grayscale(30%)' }}
               />
             </div>
           </div>
         </div>
         
-        {/* Content Section */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <div className="relative mb-2 animate-fade-in opacity-0" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
@@ -209,7 +201,6 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Animated particles in background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
           <div 
