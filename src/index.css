@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -149,11 +148,13 @@
   
   .card-3d {
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.5s cubic-bezier(0.26, 1.04, 0.54, 1), box-shadow 0.5s cubic-bezier(0.26, 1.04, 0.54, 1);
+    backface-visibility: hidden;
   }
   
   .card-3d:hover {
     box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
   }
   
   .custom-tooltip {
@@ -189,6 +190,7 @@
   .social-icon-link {
     position: relative;
     overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.26, 1.04, 0.54, 1);
   }
   
   .social-icon-link::before {
@@ -199,7 +201,7 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb), 0.2), transparent);
-    transition: left 0.5s;
+    transition: left 0.5s cubic-bezier(0.26, 1.04, 0.54, 1);
   }
   
   .social-icon-link:hover::before {
@@ -213,10 +215,12 @@
 
 .glassmorphism {
   @apply bg-white/80 dark:bg-black/20 backdrop-blur-lg border border-white/20 dark:border-white/10 shadow-lg;
+  transition: all 0.5s cubic-bezier(0.26, 1.04, 0.54, 1);
 }
 
 .section-container {
   @apply opacity-0;
+  transition: opacity 0.8s cubic-bezier(0.26, 1.04, 0.54, 1);
 }
 
 .section-container.visible {
@@ -250,7 +254,7 @@
   transform: translate(-50%, -50%);
   mix-blend-mode: difference;
   pointer-events: none;
-  transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.2s cubic-bezier(0.26, 1.04, 0.54, 1), width 0.3s cubic-bezier(0.26, 1.04, 0.54, 1), height 0.3s cubic-bezier(0.26, 1.04, 0.54, 1), opacity 0.3s cubic-bezier(0.26, 1.04, 0.54, 1);
   z-index: 9999;
 }
 
@@ -260,6 +264,16 @@
   background-color: rgba(var(--primary-rgb), 0.2);
 }
 
+.cursor.transitioning {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(var(--primary-rgb), 0.8);
+  mix-blend-mode: normal;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(10);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .cursor-text {
   position: fixed;
   font-size: 12px;
@@ -267,23 +281,26 @@
   color: hsl(var(--primary));
   pointer-events: none;
   z-index: 9999;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s cubic-bezier(0.26, 1.04, 0.54, 1), transform 0.3s cubic-bezier(0.26, 1.04, 0.54, 1);
+  transform: translateY(0);
 }
 
 .scroll-progress-container {
   position: relative;
   overflow: hidden;
+  transition: opacity 0.5s cubic-bezier(0.26, 1.04, 0.54, 1);
 }
 
 .scroll-progress-bar {
   position: absolute;
   bottom: 0;
   width: 100%;
-  transition: height 0.2s ease;
+  transition: height 0.3s cubic-bezier(0.26, 1.04, 0.54, 1);
 }
 
 .particle-canvas {
   opacity: 0.2;
+  transition: opacity 0.5s cubic-bezier(0.26, 1.04, 0.54, 1);
 }
 
 @keyframes float {
@@ -358,4 +375,40 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.4);
+}
+
+@keyframes rotate-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes morph {
+  0% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+}
+
+@keyframes appear {
+  0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-down {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes zoom-in {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes blur-in {
+  0% { filter: blur(8px); opacity: 0; }
+  100% { filter: blur(0); opacity: 1; }
 }
