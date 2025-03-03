@@ -1,6 +1,5 @@
-
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowDown, Briefcase, Github, Linkedin, Mail, Phone, Sparkles } from 'lucide-react';
+import { ArrowDown, Briefcase, Github, Linkedin, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
@@ -100,11 +99,9 @@ const Hero = () => {
         </div>
         
         <div className="relative">
-          <Sparkles className="absolute -left-8 -top-6 text-italian-terracotta opacity-70 animate-pulse-slow" size={24} />
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-italiana font-bold mb-6 animate-fade-in opacity-0 bg-clip-text text-transparent bg-gradient-to-r from-italian-chianti to-italian-terracotta" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             Sindhu Petapalle
           </h1>
-          <Sparkles className="absolute -right-8 -top-6 text-italian-terracotta opacity-70 animate-pulse-slow" size={24} />
         </div>
         
         <h2 className="text-xl md:text-2xl text-italian-chianti/80 mb-8 animate-fade-in opacity-0 font-italiana" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
